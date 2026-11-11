@@ -1,0 +1,29 @@
+# ===== Secretos =====
+.env
+*.env.local
+
+# ===== Backend (Java / Maven) =====
+Backend/target/
+**/target/
+*.class
+*.log
+hs_err_pid*
+
+# ===== Frontend (React / Vite) =====
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.vite/
+npm-debug.log*
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+out/
+
+# ===== Sistema operativo =====
+.DS_Store
+Thumbs.db
+desktop.ini
