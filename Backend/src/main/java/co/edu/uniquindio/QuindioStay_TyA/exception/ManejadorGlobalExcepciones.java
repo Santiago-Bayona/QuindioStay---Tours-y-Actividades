@@ -9,6 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingRequestHeaderException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -159,6 +164,51 @@ public class ManejadorGlobalExcepciones {
         String detalle = ex.getMostSpecificCause().getMessage();
         log.warn("Restricción violada en {}: {}", req.getRequestURI(), detalle);
         return responder(HttpStatus.CONFLICT, traducirRestriccion(detalle), req);
+    }
+
+    // ------------------------------------------------------------------
+    // Errores de la petición HTTP (header, parámetros, URL, método)
+    // ------------------------------------------------------------------
+
+    /**
+     * Falta un header obligatorio. El único que usa la API es {@code X-Usuario-Id}
+     * (la sesión), así que se responde 401 pidiendo iniciar sesión.
+     */
+    @ExceptionHandler(MissingRequestHeaderException.class)
+    public ResponseEntity<RespuestaError> manejarHeaderFaltante(MissingRequestHeaderException ex, HttpServletRequest req) {
+        return responder(HttpStatus.UNAUTHORIZED, "Debe iniciar sesión para realizar esta operación", req);
+    }
+
+    /** Falta un parámetro obligatorio de la URL, p. ej. {@code ?estado=} → 400. */
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<RespuestaError> manejarParametroFaltante(MissingServletRequestParameterException ex,
+                                                                   HttpServletRequest req) {
+        return responder(HttpStatus.BAD_REQUEST, "Falta el parámetro '" + ex.getParameterName() + "'", req);
+    }
+
+    /**
+     * Un parámetro o un id de la URL no tiene el tipo esperado, p. ej. {@code /api/tours/abc}
+     * o un estado que no existe → 400.
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<RespuestaError> manejarTipoInvalido(MethodArgumentTypeMismatchException ex,
+                                                              HttpServletRequest req) {
+        return responder(HttpStatus.BAD_REQUEST,
+                "El valor '" + ex.getValue() + "' no es válido para '" + ex.getName() + "'", req);
+    }
+
+    /** La URL no corresponde a ningún endpoint → 404. */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<RespuestaError> manejarRutaInexistente(NoResourceFoundException ex, HttpServletRequest req) {
+        return responder(HttpStatus.NOT_FOUND, "La ruta solicitada no existe", req);
+    }
+
+    /** El endpoint existe pero no con ese método HTTP (p. ej. DELETE donde solo hay GET) → 405. */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<RespuestaError> manejarMetodoNoPermitido(HttpRequestMethodNotSupportedException ex,
+                                                                   HttpServletRequest req) {
+        return responder(HttpStatus.METHOD_NOT_ALLOWED,
+                "El método " + ex.getMethod() + " no está permitido en esta ruta", req);
     }
 
     // ------------------------------------------------------------------
