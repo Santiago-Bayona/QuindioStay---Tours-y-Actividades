@@ -17,5 +17,12 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      // Reglas de estilo del compilador de React que no aplican a este proyecto (cargas simples en useEffect).
+      'react-hooks/set-state-in-effect': 'off',
+      'react-hooks/use-memo': 'off',
+      'react-refresh/only-export-components': 'off',
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' }],
+    },
   },
 ])
