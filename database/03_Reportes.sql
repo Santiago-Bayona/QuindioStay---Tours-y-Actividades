@@ -2,7 +2,7 @@
 -- QuindíoStay · Módulo Tours y Actividades
 -- Proyecto Final - Bases de Datos I (02D) · Universidad del Quindío · 2026-2
 --
--- 03_Reportes_GrupoNN.sql  ·  Orden de ejecución: 3 de 3
+-- 03_Reportes.sql  ·  Orden de ejecución: 3 de 3
 -- Las 10 consultas de los reportes definidos en la Entrega 2:
 --   3 simples (R1, R4, R7), 4 intermedios (R2, R3, R5, R10)
 --   y 3 avanzados con subconsultas (R6, R8, R9).
