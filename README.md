@@ -6,7 +6,7 @@ Módulo de **Tours y actividades locales** de la plataforma QuindíoStay: public
 
 **Integrantes**
 
-| Nombre | Código |
+| Nombre  |
 |---|---|
 | Cesar Santiago Bayona Peñuela  |
 | Sofia Santamaria Rendon  |
