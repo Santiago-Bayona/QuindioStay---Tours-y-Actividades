@@ -2,7 +2,7 @@
 -- QuindíoStay · Módulo Tours y Actividades
 -- Proyecto Final - Bases de Datos I (02D) · Universidad del Quindío · 2026-2
 --
--- 02_DML_GrupoNN.sql  ·  Orden de ejecución: 2 de 3 (después de 01_DDL)
+-- 02_DML.sql  ·  Orden de ejecución: 2 de 3 (después de 01_DDL)
 -- Datos de ejemplo verosímiles y asimétricos, de enero de 2025 a
 -- diciembre de 2026. Fecha de corte: 15 de noviembre de 2026 (las
 -- salidas anteriores ya ocurrieron; las posteriores están programadas).
@@ -33,9 +33,6 @@
 --   Operador ............. operador1
 --   Cliente .............. valentina.rojas@gmail.com
 --
--- Los datos cumplen las reglas que valida la aplicación (cupo, idioma del
--- guía, cruces de horario, edad mínima, plan vigente del mismo prestador,
--- reembolsos). El script 04_Verificacion_GrupoNN.sql lo comprueba.
 -- =====================================================================
 
 SET NAMES utf8mb4;
