@@ -2,7 +2,7 @@
 -- QuindíoStay · Módulo Tours y Actividades
 -- Proyecto Final - Bases de Datos I (02D) · Universidad del Quindío · 2026-2
 --
--- 01_DDL_GrupoNN.sql  ·  Orden de ejecución: 1 de 3
+-- 01_DDL.sql  ·  Orden de ejecución: 1 de 3
 -- Crea la base de datos tours_actividades con sus 18 tablas, llaves
 -- primarias y foráneas, restricciones (NOT NULL, UNIQUE, CHECK, DEFAULT)
 -- e índices.
