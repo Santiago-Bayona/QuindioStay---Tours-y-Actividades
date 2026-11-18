@@ -2,7 +2,7 @@
 -- QuindíoStay · Módulo Tours y Actividades
 -- Proyecto Final - Bases de Datos I (02D) · Universidad del Quindío · 2026-2
 --
--- 04_Verificacion_GrupoNN.sql  ·  Opcional, después de 01 y 02
+-- 04_Verificacion.sql  ·  Opcional, después de 01 y 02
 -- 1) Cuenta los registros de cada tabla (sección 8.2 del documento).
 -- 2) Comprueba las reglas de negocio que no se pueden expresar con un
 --    CHECK porque miran otras tablas. Cada consulta devuelve la cantidad
