@@ -8,8 +8,8 @@ Módulo de **Tours y actividades locales** de la plataforma QuindíoStay: public
 
 | Nombre | Código |
 |---|---|
-| Cesar Santiago Bayona Peñuela | 1069643377 |
-| Sofia Santamaria Rendon | 1127575678 |
+| Cesar Santiago Bayona Peñuela  |
+| Sofia Santamaria Rendon  |
 
 ---
 
